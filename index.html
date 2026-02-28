@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            --text-color: #fff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Fade-in on load, fade-out on click */
+        body.visible { opacity: 1; }
+        body.fade-out { opacity: 0; }
+
+        .sparkles {
+            position: absolute;
+            width: 100%; height: 100%;
+            background-image: radial-gradient(circle, #fff 10%, transparent 20%);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            animation: twinkle 3s infinite alternate;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.4; transform: scale(1.05); }
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 4rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background: rgba(255, 255, 255, 0.9);
+            color: #7b88d1;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .glass-card { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sparkles"></div>
+
+    <div class="content-container" id="mainContent">
+        <div class="glass-card">
+            <h1>Happy Birthday,<br>Chashni Baby</h1>
+            <button id="playBtn">Play Your Surprise</button>
+        </div>
+    </div>
+
+    <script>
+        // Transition In when page loads
+        window.addEventListener('load', () => {
+            document.body.classList.add('visible');
+        });
+
+        // Cinematic redirect to YouTube
+        document.getElementById('playBtn').addEventListener('click', () => {
+            // Fade the whole page out
+            document.body.classList.remove('visible');
+            document.body.classList.add('fade-out');
+            
+            // Wait for the 1-second CSS fade transition to finish, then redirect
+            setTimeout(() => {
+                window.location.href = 'https://youtube.com/shorts/nczWIK2axjw?si=OcW-Yib-jCm0vmUj';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
